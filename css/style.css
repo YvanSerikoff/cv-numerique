@@ -462,3 +462,38 @@ input:focus, textarea:focus { outline: 2px solid color-mix(in oklab, var(--prima
   outline-offset: 2px;
   border-radius: .5rem;
 }
+
+/* Mise en page "À propos": image + texte côte à côte au-dessus des boutons */
+.intro .intro-grid {
+  display: grid;
+  grid-template-columns: auto 1fr; /* image | texte */
+  align-items: center;
+  gap: 1rem 1.25rem;
+  margin-bottom: .75rem; /* espace avant les boutons */
+}
+
+/* À propos — agrandir l'image de profil (responsive) */
+.intro .avatar {
+  width: clamp(200px, 50vw, 350px);
+  height: clamp(200px, 50vw, 350px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+}
+
+/* Nettoyer le paragraphe */
+.intro .intro-grid p {
+  margin: 0;
+}
+
+/* Responsive: empiler sur petits écrans */
+@media (max-width: 640px) {
+  .intro .intro-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .intro .avatar {
+    width: 96px;
+    height: 96px;
+  }
+}
