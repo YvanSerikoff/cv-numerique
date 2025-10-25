@@ -292,3 +292,68 @@ input:focus, textarea:focus { outline: 2px solid color-mix(in oklab, var(--prima
   }
 }
 
+/* === Soft Skills & Loisirs — 2x2 grid avec image au-dessus du texte === */
+#soft-skills .soft-grid,
+#loisirs .soft-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .9rem;
+}
+
+#soft-skills .soft-grid li,
+#loisirs .soft-grid li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 1rem;
+  gap: .55rem;
+  min-height: 170px;
+
+  /* carte adoucie */
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: .7rem;
+}
+
+/* Image en premier enfant → pastille propre */
+#soft-skills .soft-grid li > img:first-child,
+#loisirs .soft-grid li > img:first-child {
+  display: block;
+  width: clamp(60px, 14vw, 90px);
+  height: clamp(60px, 14vw, 90px);
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  padding: .5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+/* Icône Font Awesome en premier enfant → pastille homogène */
+#soft-skills .soft-grid li > i:first-child,
+#loisirs .soft-grid li > i:first-child {
+  width: clamp(60px, 14vw, 90px);
+  height: clamp(60px, 14vw, 90px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+
+  color: var(--primary);
+  font-size: clamp(28px, 6vw, 36px);
+}
+
+/* Si vous enveloppez le texte dans un <span>, on l’optimise */
+#soft-skills .soft-grid li > span:last-child,
+#loisirs .soft-grid li > span:last-child {
+  font-weight: 600;
+  letter-spacing: .2px;
+}
