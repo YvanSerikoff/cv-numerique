@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projet Classification S3 (KNN) — Démonstration</title>
+  <meta name="description" content="Démonstration vidéo et description du projet classification S3 (KNN)." />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/project.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../index.html#a-propos" aria-label="Aller à la section À propos">
+      <div>
+        <h1 class="name">Yvan Serikoff</h1>
+        <p class="tagline">Étudiant en informatique • Recherche Stage</p>
+      </div>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul id="menu" class="nav-list">
+        <li><a href="../index.html#projets">Retour aux projets</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <article class="card project-wrap">
+    <a class="back-link" href="../index.html#projets">← Retour</a>
+
+    <header class="project-hero">
+      <h1>Projet classification S3 (KNN)</h1>
+      <div class="video-frame" role="region" aria-label="Vidéo de démonstration">
+        <video controls preload="metadata" poster="../assets/videos/video-placeholder%20(1).png">
+          <source src="../assets/videos/vid_classification.mp4" type="video/mp4" />
+          Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+      </div>
+    </header>
+
+    <section class="project-body">
+      <h2>Description</h2>
+      <p>Implémentation d’un classifieur K-Nearest Neighbors sur un jeu de données d’exemple, avec interface JavaFX pour charger des données, ajuster K, et visualiser les résultats.</p>
+      <p>Travail sur la normalisation des features, la distance (euclidienne/manhattan), et la validation croisée basique.</p>
+
+      <div class="project-actions">
+        <a class="btn" href="https://github.com/YvanSerikoff/S3.02" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Github</a>
+      </div>
+    </section>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span>Yvan Serikoff — CV numérique.</p>
+  </div>
+</footer>
+
+<script defer src="../js/hard-skills-carousel.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

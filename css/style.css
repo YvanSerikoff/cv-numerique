@@ -28,7 +28,14 @@
   --radius-sm: .5rem;
   --radius-md: .75rem;
   --radius-lg: 1rem;
+
+  /* Hard Skills — cartes visibles (responsive) */
+  --hs-slides-per-view: 2.4; /* ~2,4 cartes par défaut */
 }
+
+@media (min-width: 900px) { :root { --hs-slides-per-view: 3; } }     /* desktop: 3 cartes */
+@media (max-width: 700px) { :root { --hs-slides-per-view: 2; } }     /* tablette: 2 cartes */
+@media (max-width: 480px) { :root { --hs-slides-per-view: 1.35; } }  /* mobile: ~1,35 carte */
 
 html.dark {
   --bg: #0e1423;
@@ -56,7 +63,7 @@ html.dark {
 /* ===========================
    Base & Accessibilité
    =========================== */
-* { box-sizing: border-box; }
+* { box-sizing: border-box; min-width: 0; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
@@ -68,7 +75,7 @@ body {
     radial-gradient(1000px 500px at 90% -20%, color-mix(in oklab, var(--success) 18%, transparent), transparent 62%) no-repeat,
     var(--bg);
 }
-img { max-width: 100%; height: auto; }
+img, svg, video { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 
 .sr-only {
@@ -200,11 +207,12 @@ p { margin: 0 0 .75rem; color: var(--text); }
 #a-propos { --accent: linear-gradient(90deg, var(--accent-2), var(--accent-1)); }
 
 .intro .intro-grid {
-  display: grid; grid-template-columns: auto 1fr; align-items: center;
+  display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); /* anti-overflow */
+  align-items: center;
   gap: 1rem 1.25rem; margin-bottom: .75rem;
 }
 
-/* Avatar + Hover interactif demandé */
+/* Avatar + Hover interactif */
 .intro .avatar {
   width: clamp(200px, 40vw, 320px);
   height: clamp(200px, 40vw, 320px);
@@ -236,7 +244,6 @@ p { margin: 0 0 .75rem; color: var(--text); }
     0 0 0 4px color-mix(in oklab, var(--primary) 28%, transparent),
     0 10px 28px color-mix(in oklab, var(--primary) 18%, rgba(0,0,0,.12));
 }
-
 .intro .intro-grid p { margin: 0; }
 .intro .cta-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .75rem; }
 
@@ -246,80 +253,59 @@ p { margin: 0 0 .75rem; color: var(--text); }
 }
 
 /* ===========================
-   Hard Skills — Carrousel
+   Hard Skills — défilement continu (via JS), cartes étroites
    =========================== */
 #hard-skills { --accent: linear-gradient(90deg, #3b82f6, #06b6d4); }
 #hard-skills .carousel { position: relative; max-width: min(760px, 100%); margin-inline: auto; }
 #hard-skills .carousel-viewport {
-  position: relative; overflow: hidden; padding-inline: 2.75rem;
+  position: relative; overflow: hidden; padding-inline: .5rem; /* compact */
   border-radius: var(--radius-md); contain: paint;
   background: color-mix(in oklab, var(--bg-elev) 95%, transparent);
   border: 1px solid var(--border);
 }
+/* caches opaques sur les bords (alignés avec le padding) */
 #hard-skills .carousel-viewport::before,
 #hard-skills .carousel-viewport::after {
-  content: ""; position: absolute; top: 0; bottom: 0; width: 2.75rem;
+  content: ""; position: absolute; top: 0; bottom: 0; width: .5rem;
   background: var(--card); pointer-events: none; z-index: 2;
 }
 #hard-skills .carousel-viewport::before { left: 0; box-shadow: inset -6px 0 10px -8px rgba(0,0,0,.12); }
 #hard-skills .carousel-viewport::after  { right: 0; box-shadow: inset  6px 0 10px -8px rgba(0,0,0,.12); }
 
+/* Piste: animée en continu par JS, pas d'animation CSS par slide */
 #hard-skills .skills {
   position: relative; z-index: 1; display: flex; gap: 0; padding: 0; margin: 0; list-style: none;
-  transition: transform .35s ease;
+  transition: none !important;
+  will-change: transform;
 }
+
+/* Cartes: étroites, 1 / var(--hs-slides-per-view) */
 #hard-skills .skills li {
-  flex: 0 0 100%; box-sizing: border-box;
-  padding: 1rem 1.25rem; min-height: 220px;
+  flex: 0 0 calc(100% / var(--hs-slides-per-view));
+  box-sizing: border-box;
+  padding: .6rem .75rem; min-height: 150px; margin-top: .4rem;
   background: linear-gradient(180deg, color-mix(in oklab, var(--card) 96%, transparent), var(--card));
   border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
-  border-radius: .75rem; box-shadow: var(--shadow-sm);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .6rem;
+  border-radius: .6rem; box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .35rem;
 }
 
+/* Icône/logo compact */
 #hard-skills .skill-icon {
-  display: block; width: clamp(56px, 12vw, 88px); height: clamp(56px, 12vw, 88px);
+  display: block; width: clamp(38px, 8vw, 64px); height: clamp(38px, 8vw, 64px);
   aspect-ratio: 1 / 1; object-fit: contain;
   background: var(--bg-elev); border: 1px solid var(--border);
-  border-radius: .75rem; padding: .5rem; box-shadow: var(--shadow-sm);
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
+  border-radius: .6rem; padding: .35rem; box-shadow: var(--shadow-sm);
+  transition: none !important;       /* pas d’hover */
 }
-#hard-skills .skills li > span { font-weight: 650; font-size: 1.05rem; letter-spacing: .2px; }
+#hard-skills .skills li > span { font-size: .95rem; letter-spacing: .2px; font-weight: 650; }
 
-#hard-skills .carousel-btn {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 2.4rem; height: 2.4rem; z-index: 3;
-  display: inline-flex; align-items: center; justify-content: center;
-  border-radius: 999px; background: var(--bg-elev); border: 1px solid var(--border); color: var(--text);
-  box-shadow: var(--shadow-md); cursor: pointer; transition: filter .18s ease;
-}
-#hard-skills .carousel-btn:hover { filter: brightness(1.06); }
-#hard-skills .carousel-btn:disabled { opacity: .5; cursor: not-allowed; }
-#hard-skills .carousel-btn.prev { left: .25rem; }
-#hard-skills .carousel-btn.next { right: .25rem; }
-
-#hard-skills .skills li:hover, #hard-skills .skills li:focus-within {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-  border-color: color-mix(in oklab, var(--primary) 35%, var(--border));
-}
-#hard-skills .skills li:hover .skill-icon, #hard-skills .skills li:focus-within .skill-icon {
-  transform: scale(1.06);
-  border-color: var(--primary);
-  box-shadow: 0 12px 28px color-mix(in oklab, var(--primary) 22%, rgba(0,0,0,.12));
-  filter: saturate(1.04);
-}
-#hard-skills .skills li:hover > span, #hard-skills .skills li:focus-within > span { letter-spacing: .3px; }
-
-@media (hover: none) and (pointer: coarse) {
-  #hard-skills .carousel-btn { width: 2.8rem; height: 2.8rem; }
-  #hard-skills .carousel-viewport { padding-inline: 3rem; }
-}
-@media (max-width: 480px) {
-  #hard-skills .skills li { min-height: 190px; padding: .85rem 1rem; gap: .5rem; }
-  #hard-skills .skill-icon { width: clamp(52px, 16vw, 76px); height: clamp(52px, 16vw, 76px); padding: .45rem; border-radius: .65rem; }
-  #hard-skills .skills li > span { font-size: 1rem; }
-}
+/* Désactive tout hover/focus visuel sur le carrousel et masque d’anciens boutons */
+#hard-skills .skills li:hover,
+#hard-skills .skills li:focus-within { transform: none !important; box-shadow: var(--shadow-sm) !important; border-color: color-mix(in oklab, var(--border) 80%, transparent) !important; }
+#hard-skills .skills li:hover .skill-icon,
+#hard-skills .skills li:focus-within .skill-icon { transform: none !important; box-shadow: var(--shadow-sm) !important; border-color: var(--border) !important; filter: none !important; }
+#hard-skills .carousel-btn { display: none !important; }
 
 /* ===========================
    Soft Skills & Loisirs — grilles 2x2
@@ -334,11 +320,13 @@ p { margin: 0 0 .75rem; color: var(--text); }
 }
 .soft-grid li {
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-  padding: 1rem; gap: .55rem; min-height: 170px;
+  padding: 1rem; gap: .55rem; min-height: 170px; overflow: hidden;
   background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background-color .25s ease, filter .25s ease;
 }
+
+/* Pastille image */
 .soft-grid li > img:first-child {
   display: block; width: clamp(60px, 14vw, 90px); height: clamp(60px, 14vw, 90px);
   aspect-ratio: 1 / 1; object-fit: contain;
@@ -346,6 +334,8 @@ p { margin: 0 0 .75rem; color: var(--text); }
   border-radius: .75rem; padding: .5rem; box-shadow: var(--shadow-sm);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
 }
+
+/* Pastille icône (si utilisée en premier enfant) */
 .soft-grid li > i:first-child {
   width: clamp(60px, 14vw, 90px); height: clamp(60px, 14vw, 90px);
   display: inline-flex; align-items: center; justify-content: center;
@@ -353,6 +343,8 @@ p { margin: 0 0 .75rem; color: var(--text); }
   box-shadow: var(--shadow-sm); color: var(--primary); font-size: clamp(28px, 6vw, 36px);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
 }
+
+/* Hover interactif */
 .soft-grid li:hover, .soft-grid li:focus-within {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
@@ -366,6 +358,12 @@ p { margin: 0 0 .75rem; color: var(--text); }
   border-color: var(--primary);
   box-shadow: 0 12px 26px color-mix(in oklab, var(--primary) 28%, transparent);
   filter: saturate(1.04);
+}
+
+/* Si un <i> suit l’image (HTML actuel), on évite la double pastille */
+#soft-skills .soft-grid li > i:not(:first-child),
+#loisirs .soft-grid li > i:not(:first-child) {
+  display: none;
 }
 
 /* ===========================
@@ -410,21 +408,41 @@ p { margin: 0 0 .75rem; color: var(--text); }
 }
 
 /* ===========================
-   Contact
+   Contact — cartes (sans formulaire)
    =========================== */
-.contact-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; }
-@media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
-.contact-form label { display: grid; gap: .25rem; margin-bottom: .6rem; }
-input, textarea {
-  width: 100%; padding: .6rem .7rem; border-radius: .6rem;
-  border: 1px solid var(--border); background: var(--bg-elev); color: var(--text);
+#contact { --accent: linear-gradient(90deg, var(--primary), var(--success)); }
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
 }
-input:focus, textarea:focus {
-  outline: 2px solid color-mix(in oklab, var(--primary) 55%, transparent);
-  border-color: var(--primary);
+.contact-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: .9rem;
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
-.contact-links { list-style: none; padding: 0; margin: 0; display: grid; gap: .4rem; }
-.contact-links a { color: var(--text); }
+.contact-card:hover,
+.contact-card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in oklab, var(--primary) 35%, var(--border));
+}
+.contact-card .contact-icon,
+.contact-card > img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: .8rem;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+}
 
 /* ===========================
    Back to top & Footer
@@ -443,7 +461,6 @@ input:focus, textarea:focus {
 #formations  { --accent: linear-gradient(90deg, var(--success), #3b82f6); }
 #experiences { --accent: linear-gradient(90deg, var(--danger), var(--warn)); }
 #projets     { --accent: linear-gradient(90deg, var(--accent-1), var(--accent-2)); }
-#contact     { --accent: linear-gradient(90deg, var(--primary), var(--success)); }
 
 /* ===========================
    Préférences de mouvement réduit
@@ -452,61 +469,7 @@ input:focus, textarea:focus {
   * { transition: none !important; }
 }
 
-/* === Contact — cartes sans formulaire === */
-.contact-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-}
-
-.contact-card {
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: .9rem;
-  padding: 1rem;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: .6rem;
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-}
-
-.contact-card:hover,
-.contact-card:focus-within {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: color-mix(in oklab, var(--primary) 35%, var(--border));
-}
-
-/* Placeholder image — remplacez par vos visuels quand prêts */
-.img-placeholder {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: 1px dashed color-mix(in oklab, var(--muted) 60%, var(--border));
-  border-radius: .7rem;
-  background:
-    repeating-linear-gradient(
-      -45deg,
-      color-mix(in oklab, var(--chip) 70%, transparent) 0 10px,
-      transparent 10px 20px
-    );
-  display: grid;
-  place-items: center;
-  color: var(--muted);
-  font-size: .9rem;
-  position: relative;
-}
-
-.img-placeholder::after {
-  content: "Image à insérer";
-  opacity: .9;
-}
-
-.contact-card > img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-  border-radius: .8rem;
-  border: 1px solid var(--border);
-}
-
+/* ===========================
+   Sécurité anti-overflow globale
+   =========================== */
+html, body { overflow-x: hidden; }
