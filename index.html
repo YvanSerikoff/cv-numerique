@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV — Prénom Nom</title>
+  <meta name="description" content="CV numérique étudiant — compétences, formations, expériences, projets et contact." />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preload" as="image" href="assets/profile.jpg" />
+  <script defer src="js/main.js"></script>
+  <script defer src="https://kit.fontawesome.com/a2d9a9b1a1.js" crossorigin="anonymous"></script>
+
+  <meta property="og:title" content="CV — Prénom Nom" />
+  <meta property="og:description" content="CV numérique étudiant — compétences, formations, expériences, projets et contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-cover.jpg" />
+  <meta property="og:url" content="https://votre-domaine-ou-github-pages" />
+
+  <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Person",
+      "name":"Prénom Nom",
+      "jobTitle":"Étudiant(e) en ...",
+      "email":"mailto:email@example.com",
+      "url":"https://votre-domaine",
+      "image":"assets/profile.jpg",
+      "sameAs":[
+        "https://github.com/username",
+        "https://www.linkedin.com/in/username"
+      ]
+    }
+  </script>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <div class="brand">
+      <img src="assets/profile.jpg" alt="Photo de Prénom Nom" class="avatar" />
+      <div>
+        <h1 class="name">Prénom Nom</h1>
+        <p class="tagline">Étudiant(e) en [Domaine] • Recherche [Stage/Alternance/Job]</p>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul id="menu" class="nav-list">
+        <li><a href="#hard-skills">Hard Skills</a></li>
+        <li><a href="#soft-skills">Soft Skills</a></li>
+        <li><a href="#formations">Formations</a></li>
+        <li><a href="#experiences">Expériences</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#loisirs">Loisirs</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button id="theme-toggle" class="icon-btn" aria-label="Basculer le thème">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu" class="container">
+  <section class="intro card">
+    <h2>À propos</h2>
+    <p>
+      Étudiant(e) en <strong>[Domaine]</strong> à <strong>[Établissement]</strong>, je suis passionné(e) par
+      <strong>[Thème/Technologie]</strong>. Je recherche <strong>[stage/alternance/poste]</strong> à partir de
+      <strong>[date]</strong>. Curieux(se), rigoureux(se) et orienté(e) résultats.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary" href="#contact"><i class="fa-solid fa-paper-plane"></i> Me contacter</a>
+      <a class="btn" href="assets/CV.pdf" target="_blank" rel="noopener">Télécharger le CV</a>
+    </div>
+  </section>
+
+  <section id="hard-skills" class="card">
+    <h2>Hard Skills</h2>
+    <ul class="skills">
+      <li>
+        <span>HTML/CSS</span>
+        <div class="meter" aria-label="HTML/CSS niveau"><span style="width: 85%" aria-hidden="true"></span></div>
+        <span class="sr-only">85%</span>
+      </li>
+      <li>
+        <span>JavaScript</span>
+        <div class="meter"><span style="width: 80%"></span></div>
+        <span class="sr-only">80%</span>
+      </li>
+      <li>
+        <span>Python</span>
+        <div class="meter"><span style="width: 75%"></span></div>
+        <span class="sr-only">75%</span>
+      </li>
+      <li>
+        <span>Git/GitHub</span>
+        <div class="meter"><span style="width: 70%"></span></div>
+        <span class="sr-only">70%</span>
+      </li>
+    </ul>
+    <div class="chips">
+      <span class="chip">React</span>
+      <span class="chip">Node.js</span>
+      <span class="chip">SQL</span>
+      <span class="chip">Tailwind</span>
+    </div>
+  </section>
+
+  <section id="soft-skills" class="card">
+    <h2>Soft Skills</h2>
+    <ul class="soft-grid">
+      <li><i class="fa-solid fa-users"></i> Travail d'équipe</li>
+      <li><i class="fa-solid fa-comments"></i> Communication</li>
+      <li><i class="fa-solid fa-bolt"></i> Proactivité</li>
+      <li><i class="fa-solid fa-lightbulb"></i> Créativité</li>
+      <li><i class="fa-solid fa-clock"></i> Gestion du temps</li>
+      <li><i class="fa-solid fa-scale-balanced"></i> Sens des responsabilités</li>
+    </ul>
+  </section>
+
+  <section id="formations" class="card">
+    <h2>Formations</h2>
+    <ol class="timeline">
+      <li>
+        <div class="time">2023 — 2025</div>
+        <div class="content">
+          <h3>[Diplôme] — [Établissement]</h3>
+          <p>Cours clés: [matière 1], [matière 2], [matière 3]. Mention: [si applicable]</p>
+        </div>
+      </li>
+      <li>
+        <div class="time">2021 — 2023</div>
+        <div class="content">
+          <h3>[Diplôme/Classe préparatoire] — [Établissement]</h3>
+          <p>Projets: [projet 1], [projet 2].</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="experiences" class="card">
+    <h2>Expériences</h2>
+    <ol class="timeline">
+      <li>
+        <div class="time">2024 — 6 mois</div>
+        <div class="content">
+          <h3>Stagiaire Développeur — [Entreprise]</h3>
+          <ul>
+            <li>Développement de [fonctionnalité] en [techno], +[X]% de [métrique].</li>
+            <li>Mise en place de tests automatisés (Jest/Playwright).</li>
+            <li>Collaboration agile (Scrum, code review, CI/CD).</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Docker</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="time">2023 — 3 mois</div>
+        <div class="content">
+          <h3>Projet tutoré — [Organisation]</h3>
+          <ul>
+            <li>Conception d’une application [description].</li>
+            <li>Intégration API et authentification.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MongoDB</span>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="projets" class="card">
+    <h2>Projets</h2>
+    <div class="projects-grid">
+      <article class="project">
+        <h3>Projet A — <span class="badge">Open Source</span></h3>
+        <p>Application de [but] permettant de [valeur].</p>
+        <div class="chips">
+          <span class="chip">React</span><span class="chip">Vite</span>
+        </div>
+        <div class="actions">
+          <a class="btn small" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Démo</a>
+          <a class="btn small" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+        </div>
+      </article>
+      <article class="project">
+        <h3>Projet B</h3>
+        <p>Outil CLI pour [objectif] avec [résultat].</p>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">CLI</span>
+        </div>
+        <div class="actions">
+          <a class="btn small" href="#" target="_blank" rel="noopener">Documentation</a>
+        </div>
+      </article>
+      <article class="project">
+        <h3>Projet C</h3>
+        <p>Dashboard de données en [stack] avec visualisations.</p>
+        <div class="chips">
+          <span class="chip">D3.js</span><span class="chip">API</span>
+        </div>
+        <div class="actions">
+          <a class="btn small" href="#" target="_blank" rel="noopener">Démo</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="loisirs" class="card">
+    <h2>Loisirs</h2>
+    <ul class="soft-grid">
+      <li><i class="fa-solid fa-camera"></i> Photographie</li>
+      <li><i class="fa-solid fa-dumbbell"></i> Fitness</li>
+      <li><i class="fa-solid fa-globe"></i> Voyages</li>
+      <li><i class="fa-solid fa-book"></i> Lecture</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="card">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <form class="contact-form" name="contact" method="post" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
+        <label>
+          Nom
+          <input type="text" name="name" placeholder="Votre nom" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="votre@email.com" required />
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
+        </label>
+        <button type="submit" class="btn primary"><i class="fa-solid fa-paper-plane"></i> Envoyer</button>
+        <p class="form-note">Ou écrivez-moi à <a id="mailto" href="mailto:email@example.com">email@example.com</a>
+          <button type="button" class="icon-btn" id="copy-email" title="Copier l'email"><i class="fa-regular fa-copy"></i></button>
+        </p>
+      </form>
+      <div class="contact-aside">
+        <ul class="contact-links">
+          <li><i class="fa-brands fa-github"></i> <a href="https://github.com/username" target="_blank" rel="noopener">github.com/username</a></li>
+          <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/username" target="_blank" rel="noopener">linkedin.com/in/username</a></li>
+          <li><i class="fa-solid fa-location-dot"></i> Ville, Pays</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<button id="back-to-top" class="back-to-top" aria-label="Retour en haut"><i class="fa-solid fa-arrow-up"></i></button>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Prénom Nom — CV numérique. Fait avec ❤️</p>
+  </div>
+</footer>
+</body>
+</html>
