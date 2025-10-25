@@ -93,32 +93,44 @@
 
   <section id="hard-skills" class="card">
     <h2>Hard Skills</h2>
-    <ul class="skills">
-      <li>
-        <span>Java</span>
-        <div class="meter" aria-label="HTML/CSS niveau"><span style="width: 85%" aria-hidden="true"></span></div>
-        <span class="sr-only">85%</span>
-      </li>
-      <li>
-        <span>SQL</span>
-        <div class="meter"><span style="width: 80%"></span></div>
-        <span class="sr-only">80%</span>
-      </li>
-      <li>
-        <span>JavaScript</span>
-        <div class="meter"><span style="width: 60%"></span></div>
-        <span class="sr-only">60%</span>
-      </li>
-      <li>
-        <span>HTML/CSS</span>
-        <div class="meter"><span style="width: 50%"></span></div>
-        <span class="sr-only">70%</span>
-      </li>
-    </ul>
-    <div class="chips">
-      <span class="chip">Git</span>
-      <span class="chip">Flutter</span>
-      <span class="chip">C</span>
+
+    <div class="carousel" role="region" aria-roledescription="carrousel" aria-label="Hard Skills">
+      <button class="carousel-btn prev" aria-label="Précédent">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        <span class="sr-only">Précédent</span>
+      </button>
+
+      <div class="carousel-viewport">
+        <ul class="skills" id="hard-skills-track" tabindex="0" aria-label="Carrousel des Hard Skills (défilement horizontal)">
+          <li>
+            <span>Java</span>
+            <div class="meter" aria-label="HTML/CSS niveau"><span style="width: 85%" aria-hidden="true"></span></div>
+            <span class="sr-only">85%</span>
+          </li>
+          <li>
+            <span>SQL</span>
+            <div class="meter"><span style="width: 80%"></span></div>
+            <span class="sr-only">80%</span>
+          </li>
+          <li>
+            <span>JavaScript</span>
+            <div class="meter"><span style="width: 60%"></span></div>
+            <span class="sr-only">60%</span>
+          </li>
+          <li>
+            <span>HTML/CSS</span>
+            <div class="meter"><span style="width: 50%"></span></div>
+            <span class="sr-only">70%</span>
+          </li>
+        </ul>
+      </div>
+
+      <button class="carousel-btn next" aria-label="Suivant">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        <span class="sr-only">Suivant</span>
+      </button>
+
+      <p class="sr-only" aria-live="polite" id="hard-skills-status"></p>
     </div>
   </section>
 
@@ -249,8 +261,7 @@
   <section id="contact" class="card">
     <h2>Contact</h2>
     <div class="contact-grid">
-      <form class="contact-form" name="contact" method="post" data-netlify="true">
-        <input type="hidden" name="form-name" value="contact">
+      <form class="contact-form" action="mailto=yvanserikoff@gmail.com" method="post" enctype="text/plain">
         <label>
           Nom
           <input type="text" name="name" placeholder="Votre nom" required />
@@ -264,9 +275,6 @@
           <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
         </label>
         <button type="submit" class="btn primary"><i class="fa-solid fa-paper-plane"></i> Envoyer</button>
-        <p class="form-note">Ou écrivez-moi à <a id="mailto" href="mailto:yvanserikoff@gmail.com">yvanserikoff@gmail.com</a>
-          <button type="button" class="icon-btn" id="copy-email" title="Copier l'email"><i class="fa-regular fa-copy"></i></button>
-        </p>
       </form>
       <div class="contact-aside">
         <ul class="contact-links">
@@ -286,5 +294,7 @@
     <p>© <span id="year"></span> Yvan Serikoff — CV numérique. Fait avec ❤️</p>
   </div>
 </footer>
+
+<script defer src="js/hard-skills-carousel.js"></script>
 </body>
 </html>

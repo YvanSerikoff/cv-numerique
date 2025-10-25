@@ -49,7 +49,3 @@ Un site statique, responsive et accessible pour présenter votre CV en ligne. Se
 
 - Icônes via Font Awesome (CDN). Vous pouvez retirer si non nécessaire.
 - Mots‑clés SEO : modifiez `<meta name="description">`, Open Graph, JSON‑LD.
-
-## Licence
-
-MIT — voir [LICENSE](LICENSE).
