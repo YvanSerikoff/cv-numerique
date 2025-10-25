@@ -87,7 +87,7 @@
     </div>
     <div class="cta-row">
       <a class="btn primary" href="#contact"><i class="fa-solid fa-paper-plane"></i> Me contacter</a>
-      <a class="btn" href="assets/CV_YVAN_SERIKOFF.pdf" target="_blank" rel="noopener">Télécharger le CV</a>
+      <a class="btn" href="assets/CV_Yvan_Serikoff.pdf" target="_blank" rel="noopener">Télécharger le CV</a>
     </div>
   </section>
 
@@ -260,29 +260,34 @@
 
   <section id="contact" class="card">
     <h2>Contact</h2>
-    <div class="contact-grid">
-      <form class="contact-form" action="mailto=yvanserikoff@gmail.com" method="post" enctype="text/plain">
-        <label>
-          Nom
-          <input type="text" name="name" placeholder="Votre nom" required />
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" placeholder="votre@email.com" required />
-        </label>
-        <label>
-          Message
-          <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
-        </label>
-        <button type="submit" class="btn primary"><i class="fa-solid fa-paper-plane"></i> Envoyer</button>
-      </form>
-      <div class="contact-aside">
-        <ul class="contact-links">
-          <li><i class="fa-brands fa-github"></i> <a href="https://github.com/YvanSerikoff" target="_blank" rel="noopener">Mon github</a></li>
-          <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/yvan-serikoff-04625b251/" target="_blank" rel="noopener">Mon LinkedIn</a></li>
-          <li><i class="fa-solid fa-location-dot"></i> Lille, France</li>
-        </ul>
-      </div>
+
+    <div class="contact-cards">
+      <article class="contact-card">
+        <img src="assets/Octicons-mark-github.svg" alt="Github" class="contact-icon" />
+        <h3>GitHub</h3>
+        <p>Découvrez mes dépôts et contributions.</p>
+        <a class="btn" href="https://github.com/YvanSerikoff" target="_blank" rel="noopener" aria-label="Ouvrir mon profil GitHub">
+          <i class="fa-brands fa-github"></i> Mon GitHub
+        </a>
+      </article>
+
+      <article class="contact-card">
+        <img src="assets/linkedin-logo-linkedin-icon-transparent-free-png.webp" alt="Linkedin" class="contact-icon" />
+        <h3>LinkedIn</h3>
+        <p>Suivez mon parcours et mes expériences.</p>
+        <a class="btn" href="https://www.linkedin.com/in/yvan-serikoff-04625b251/" target="_blank" rel="noopener" aria-label="Ouvrir mon profil LinkedIn">
+          <i class="fa-brands fa-linkedin"></i> Mon LinkedIn
+        </a>
+      </article>
+
+      <article class="contact-card">
+        <img src="assets/mail-open-arrow-up-svgrepo-com.svg" alt="Mail" class="contact-icon" />
+        <h3>E-mail</h3>
+        <p>Contactez-moi directement par email.</p>
+        <a class="btn primary" href="mailto:yvanserikoff@gmail.com" aria-label="Envoyer un e-mail">
+          <i class="fa-solid fa-paper-plane"></i> Envoyer un mail
+        </a>
+      </article>
     </div>
   </section>
 </main>
@@ -291,7 +296,7 @@
 
 <footer class="site-footer">
   <div class="container">
-    <p>© <span id="year"></span> Yvan Serikoff — CV numérique.</p>
+    <p>© <span id="year"></span>Yvan Serikoff — CV numérique.</p>
   </div>
 </footer>
 
