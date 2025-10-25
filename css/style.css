@@ -148,7 +148,16 @@ input:focus, textarea:focus { outline: 2px solid color-mix(in oklab, var(--prima
 
 /* Utilities */
 .sr-only {
-  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* === Hard Skills Carousel — 1 carte visible + flèches === */
@@ -220,3 +229,66 @@ input:focus, textarea:focus { outline: 2px solid color-mix(in oklab, var(--prima
 }
 #hard-skills .carousel-viewport::before { left: 0; box-shadow: inset -6px 0 10px -8px rgba(0,0,0,.15); }
 #hard-skills .carousel-viewport::after  { right: 0; box-shadow: inset  6px 0 10px -8px rgba(0,0,0,.15); }
+
+/* === Hard Skills — présentation propre des cartes avec images === */
+#hard-skills .skills li {
+  /* Centre le contenu et garantit une hauteur stable */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  min-height: 220px;
+  padding: 1rem 1.25rem;
+  gap: .6rem;
+}
+
+/* Icône/Logo du skill: taille uniforme, sans déborder */
+#hard-skills .skill-icon {
+  display: block;
+  width: clamp(56px, 12vw, 88px);
+  height: clamp(56px, 12vw, 88px);
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+
+  /* Pastille propre autour de l’icône */
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  padding: .5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+/* Libellé du skill (le span après l’image) */
+#hard-skills .skills li > span {
+  font-weight: 650;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  letter-spacing: .2px;
+}
+
+/* Si une jauge est présente dans une carte, on la centre et on la limite */
+#hard-skills .meter {
+  width: min(420px, 80%);
+  margin-inline: auto;
+}
+
+/* Ajustements sur petits écrans */
+@media (max-width: 480px) {
+  #hard-skills .skills li {
+    min-height: 190px;
+    padding: .8rem 1rem;
+    gap: .5rem;
+  }
+  #hard-skills .skill-icon {
+    width: clamp(52px, 16vw, 76px);
+    height: clamp(52px, 16vw, 76px);
+    padding: .45rem;
+    border-radius: .65rem;
+  }
+  #hard-skills .skills li > span {
+    font-size: 1rem;
+  }
+}
+
