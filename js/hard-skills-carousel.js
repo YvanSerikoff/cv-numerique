@@ -104,13 +104,13 @@
     render();
   };
 
-  [viewport, track].forEach((el) => {
-    el.addEventListener('mouseenter', pause);
-    el.addEventListener('mouseleave', resume);
-    el.addEventListener('focusin', pause);
-    el.addEventListener('focusout', resume);
-    el.addEventListener('touchstart', pause, { passive: true });
-  });
+  // [viewport, track].forEach((el) => {
+  //   el.addEventListener('mouseenter', pause);
+  //   el.addEventListener('mouseleave', resume);
+  //   el.addEventListener('focusin', pause);
+  //   el.addEventListener('focusout', resume);
+  //   el.addEventListener('touchstart', pause, { passive: true });
+  // });
 
   document.addEventListener('visibilitychange', () => {
     running = document.visibilityState === 'visible';
